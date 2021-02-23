@@ -48,11 +48,9 @@ describe('LogController Decorator', () => {
   test('Should return the same result of the controller', async () => {
     const { sut } = makeSut()
     const httpRequest = {
+      statusCode: 200,
       body: {
-        email: 'any_mail@mail.com',
-        name: 'any_name',
-        password: 'any_password',
-        passwordConfirmation: 'any_password'
+        name: 'Rodrigo'
       }
     }
     const httpResponse = await sut.handle(httpRequest)

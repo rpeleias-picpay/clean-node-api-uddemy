@@ -1,5 +1,5 @@
 import { MissingParamError } from '../../errors'
-import { badRequest } from '../../helpers/http-helper'
+import { badRequest, ok } from '../../helpers/http-helper'
 import { Controller, HttpRequest, HttpResponse } from '../../protocols'
 
 export class LoginController implements Controller {
@@ -10,6 +10,6 @@ export class LoginController implements Controller {
     if (!httpRequest.body.password) {
       return badRequest(new MissingParamError('password'))
     }
-    return null
+    return ok(null)
   }
 }

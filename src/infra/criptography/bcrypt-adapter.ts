@@ -1,5 +1,4 @@
 import bcrypt from 'bcrypt'
-import { resolve } from 'path'
 import { HashComparer } from '../../data/protocols/critography/hash-comparer'
 import { Hasher } from '../../data/protocols/critography/hasher'
 

@@ -47,4 +47,14 @@ describe('POST /login', () => {
       })
       .expect(200)
   })
+
+  test('Should return 402 on login', async () => {
+    await request(app)
+      .post('/api/login')
+      .send({
+        email: 'rodrigo.peleias@gmail.com',
+        password: '123'
+      })
+      .expect(401)
+  })
 })

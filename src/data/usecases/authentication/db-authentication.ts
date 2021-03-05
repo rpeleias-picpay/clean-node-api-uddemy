@@ -28,4 +28,3 @@ export class DbAuthentication implements Authentication {
     return null
   }
 }
-

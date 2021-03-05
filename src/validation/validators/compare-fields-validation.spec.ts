@@ -1,4 +1,3 @@
-
 import { InvalidParamError } from '../../presentation/errors'
 import { CompareFieldsValidation } from './compare-fields-validation'
 

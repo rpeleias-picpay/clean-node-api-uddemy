@@ -1,5 +1,5 @@
 import { Controller } from '../../../../presentation/protocols'
-import { makeAddSurveyValidation, makeLoginValdiation } from './add-survey-validation-factory'
+import { makeAddSurveyValidation } from './add-survey-validation-factory'
 
 import { makeLogControllerDecorator } from '../../decorators/log-controller-decorator-factory'
 

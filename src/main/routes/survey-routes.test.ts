@@ -17,7 +17,7 @@ beforeEach(async () => {
   await surveyCollection.deleteMany({})
 })
 describe('POST /surveys', () => {
-  test('Should return 204 on add survey success', async () => {
+  test('Should return 403 on add survey success', async () => {
     await request(app)
       .post('/api/surveys')
       .send({
@@ -30,6 +30,6 @@ describe('POST /surveys', () => {
           answer: 'Answer 2'
         }]
       })
-      .expect(204)
+      .expect(403)
   })
 })

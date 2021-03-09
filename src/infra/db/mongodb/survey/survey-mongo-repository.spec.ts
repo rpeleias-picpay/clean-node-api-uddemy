@@ -13,7 +13,6 @@ describe('Survey Mongo Repository', () => {
     await MongoHelper.disconnect()
   })
 
-
   beforeEach(async () => {
     surveyCollection = await MongoHelper.getCollection('surveys')
     await surveyCollection.deleteMany({})
@@ -26,16 +25,16 @@ describe('Survey Mongo Repository', () => {
   test('Should add a survey on success', async () => {
     const sut = makeSut()
     await sut.add({
-        question: 'any_question',
-        answers: [{
-            image: 'any_image',
-            answer: 'any_answer'
-        },
-        {            
-            answer: 'other_answer'
-        }]
+      question: 'any_question',
+      answers: [{
+        image: 'any_image',
+        answer: 'any_answer'
+      },
+      {
+        answer: 'other_answer'
+      }]
     })
-    const survey = await surveyCollection.findOne({ question: 'any_question'})
+    const survey = await surveyCollection.findOne({ question: 'any_question' })
     expect(survey).toBeTruthy()
   })
 })

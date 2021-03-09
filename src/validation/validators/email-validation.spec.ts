@@ -3,7 +3,6 @@ import { EmailValidator } from '../protocols/email-validator'
 
 import { EmailValidation } from './email-validation'
 
-
 interface SutTypes {
   sut: EmailValidation
   emailValidatorStub: EmailValidator

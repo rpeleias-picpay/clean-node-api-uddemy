@@ -3,7 +3,7 @@ import { badRequest, ok, serverError, unauthorized } from '../../../helpers/http
 import { MissingParamError } from '../../../errors'
 import { HttpRequest, Authentication } from './login-controller-protocols'
 
-import { AuthenticationModel } from '../../../../domain/usecases/authentication'
+import { AuthenticationModel } from '@/domain/usecases/authentication'
 import { Validation } from '../../../protocols'
 
 const makeAuthentication = (): Authentication => {

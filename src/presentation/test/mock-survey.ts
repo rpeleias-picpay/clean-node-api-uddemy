@@ -7,7 +7,7 @@ import { LoadSurveyById } from '../controllers/survey-result/save-survey-result/
 export const mockAddSurvey = (): AddSurvey => {
   class AddSurveyStub implements AddSurvey {
     async add (data: AddSurveyParams): Promise<void> {
-      return await new Promise(resolve => resolve(null))
+      return await Promise.resolve(null)
     }
   }
   return new AddSurveyStub()
@@ -16,7 +16,7 @@ export const mockAddSurvey = (): AddSurvey => {
 export const mockLoadSurveys = (): LoadSurveys => {
   class LoadSurveysStub implements LoadSurveys {
     async load (): Promise<SurveyModel[]> {
-      return await new Promise(resolve => resolve(mockSurveys()))
+      return await Promise.resolve(mockSurveys())
     }
   }
   return new LoadSurveysStub()
@@ -25,7 +25,7 @@ export const mockLoadSurveys = (): LoadSurveys => {
 export const mockLoadSurveyById = (): LoadSurveyById => {
   class LoadSurveyByIdStub implements LoadSurveyById {
     async loadById (id: string): Promise<SurveyModel> {
-      return await new Promise(resolve => resolve(mockSurvey()))
+      return await Promise.resolve(mockSurvey())
     }
   }
   return new LoadSurveyByIdStub()

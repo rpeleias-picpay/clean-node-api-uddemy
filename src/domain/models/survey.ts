@@ -4,7 +4,8 @@ export interface SurveyModel {
   answers: SurveyAnswerModel[]
   date: Date
 }
-export interface SurveyAnswerModel {
+
+interface SurveyAnswerModel {
   image?: string
   answer: string
 }

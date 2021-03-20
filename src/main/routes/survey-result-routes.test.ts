@@ -73,3 +73,11 @@ describe('PUT /surveys/:survetId/results', () => {
       .expect(200)
   })
 })
+
+describe('GET /surveys/:survetId/results', () => {
+  test('Should return 403 on load survey result without accessToken', async () => {
+    await request(app)
+      .get('/api/surveys/any_id/results')
+      .expect(403)
+  })
+})

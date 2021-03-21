@@ -3,7 +3,7 @@ import { badRequest, ok, serverError, unauthorized } from '@/presentation/helper
 import { MissingParamError } from '@/presentation/errors'
 import { HttpRequest, Authentication } from './login-controller-protocols'
 import { Validation } from '@/presentation/protocols'
-import { throwError } from '@/domain/test'
+import { mockAuthenticationModel, throwError } from '@/domain/test'
 import { mockValidation } from '@/presentation/test/mock-validation'
 import { mockAuthentication } from '@/presentation/test/mock-account'
 
@@ -57,7 +57,7 @@ describe('Login Controller', () => {
   test('Should return 200 if valid credentials are provided', async () => {
     const { sut } = makeSut()
     const httpResponse = await sut.handle(mockRequest())
-    expect(httpResponse).toEqual(ok({ accessToken: 'any_token' }))
+    expect(httpResponse).toEqual(ok(mockAuthenticationModel()))
   })
 
   test('Should call Vaidation with correct value', async () => {

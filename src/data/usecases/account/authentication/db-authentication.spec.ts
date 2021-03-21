@@ -96,8 +96,9 @@ describe('DbAuthentication UseCase', () => {
 
   test('Should call Encrypter with correct id', async () => {
     const { sut } = makeSut()
-    const accessToken = await sut.auth(mockAuthentication())
+    const { accessToken, name } = await sut.auth(mockAuthentication())
     expect(accessToken).toBe('any_token')
+    expect(name).toBe('any_name')
   })
 
   test('Should call UpdateAccessTokenRepository with correct values', async () => {

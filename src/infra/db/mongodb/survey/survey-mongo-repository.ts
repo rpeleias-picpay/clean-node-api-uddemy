@@ -4,7 +4,7 @@ import { LoadSurveyRepository } from '@/data/protocols/db/survey/load-surveys-re
 import { SurveyModel } from '@/domain/models/survey'
 import { AddSurveyParams } from '@/domain/usecases/survey/add-survey'
 import { MongoHelper, QueryBuilder } from '@/infra/db/mongodb/helpers'
-import { ObjectId, ObjectID } from 'mongodb'
+import { ObjectID } from 'mongodb'
 
 export class SurveyMongoRepository implements AddSurveyRepository, LoadSurveyRepository, LoadSurveyByIdRepository {
   async add (surveyData: AddSurveyParams): Promise<void> {

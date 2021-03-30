@@ -1,40 +1,47 @@
+/* eslint-disable @typescript-eslint/return-await */
 import { Hasher } from '@/data/protocols/critography/hasher'
 import { HashComparer } from '@/data/protocols/critography/hash-comparer'
 import { Encrypter } from '@/data/protocols/critography/encrypter'
 import { Decrypter } from '@/data/protocols/critography/decrypter'
+import faker from 'faker'
 
-export const mockHasher = (): Hasher => {
-  class HasherStub implements Hasher {
-    async hash (value: string): Promise<string> {
-      return await Promise.resolve('any_password')
-    }
+export class HasherSpy implements Hasher {
+  digest = faker.random.uuid()
+  plaintext: string
+
+  async hash (plaintext: string): Promise<string> {
+    this.plaintext = plaintext
+    return this.digest
   }
-  return new HasherStub()
 }
 
-export const mockDecrypter = (): Decrypter => {
-  class DecrypterStub implements Decrypter {
-    async decrypt (value: string): Promise<string> {
-      return await Promise.resolve('any_value')
-    }
+export class DecrypterSpy implements Decrypter {
+  plaintext = faker.random.uuid()
+  ciphertext: string
+
+  async decrypt (ciphertext: string): Promise<string> {
+    this.ciphertext = ciphertext
+    return Promise.resolve(this.plaintext)
   }
-  return new DecrypterStub()
 }
 
-export const mockEncrypter = (): Encrypter => {
-  class EncrypterStub implements Encrypter {
-    async encrypt (value: string): Promise<string> {
-      return await Promise.resolve('any_token')
-    }
+export class EncrypterSpy implements Encrypter {
+  ciphertext = faker.random.uuid()
+  plaintext: string
+
+  async encrypt (plaintext: string): Promise<string> {
+    this.plaintext = plaintext
+    return await Promise.resolve(this.ciphertext)
   }
-  return new EncrypterStub()
 }
 
-export const mockHashComparer = (): HashComparer => {
-  class HashComparerStub implements HashComparer {
-    async compare (value: string, hash: string): Promise<boolean> {
-      return true
-    }
+export class HashComparerSpy implements HashComparer {
+  plaintext: string
+  digest: string
+  isValid = true
+  async compare (plaintext: string, digest: string): Promise<boolean> {
+    this.plaintext = plaintext
+    this.digest = digest
+    return Promise.resolve(this.isValid)
   }
-  return new HashComparerStub()
 }

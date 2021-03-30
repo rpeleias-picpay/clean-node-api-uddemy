@@ -7,9 +7,9 @@ import { MongoHelper, QueryBuilder } from '@/infra/db/mongodb/helpers'
 import { ObjectID } from 'mongodb'
 
 export class SurveyMongoRepository implements AddSurveyRepository, LoadSurveyRepository, LoadSurveyByIdRepository {
-  async add (surveyData: AddSurveyParams): Promise<void> {
+  async add (data: AddSurveyParams): Promise<void> {
     const surveyCollection = await MongoHelper.getCollection('surveys')
-    await surveyCollection.insertOne(surveyData)
+    await surveyCollection.insertOne(data)
   }
 
   async loadAll (accountId: string): Promise<SurveyModel[]> {

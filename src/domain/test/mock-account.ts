@@ -1,27 +1,22 @@
 import { AccountModel } from '@/domain/models/account'
 import { AddAccountParams } from '@/domain/usecases/account/add-account'
-import { AuthenticationModel } from '../models/authentication'
-import { AuthenticationParams } from '../usecases/account/authentication'
+import { AuthenticationParams } from '@/domain/usecases/account/authentication'
+import faker from 'faker'
 
-export const mockAccount = (): AccountModel => ({
-  id: 'any_id',
-  name: 'any_name',
-  email: 'any_email@mail.com',
-  password: 'any_password'
+export const mockAccountModel = (): AccountModel => ({
+  id: faker.random.uuid(),
+  name: faker.name.findName(),
+  email: faker.internet.email(),
+  password: faker.internet.password()
 })
 
 export const mockAccountParams = (): AddAccountParams => ({
-  name: 'any_name',
-  email: 'any_email@mail.com',
-  password: 'any_password'
+  name: faker.name.findName(),
+  email: faker.internet.email(),
+  password: faker.internet.password()
 })
 
 export const mockAuthentication = (): AuthenticationParams => ({
-  email: 'any_email@mail.com',
-  password: 'any_password'
-})
-
-export const mockAuthenticationModel = (): AuthenticationModel => ({
-  accessToken: 'any_token',
-  name: 'any_name'
+  email: faker.internet.email(),
+  password: faker.internet.password()
 })
